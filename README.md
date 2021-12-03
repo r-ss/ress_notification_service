@@ -16,7 +16,7 @@ Personal service to send me telegram notifications from various scripts, service
 When you have some apps and services running here and there, they send you some messages, statuses, alarms. Mostly via Telegram. Easiest way is directly touch Telegram API from app, but here are problems when apps-zoo grows up. Some services may send you message at night and you don't want it. Another service send you message at night and you need it. So width Extra services that can manage notification you have possibility to filter messages by own rules, collect them etc.
 
 
-                                                  │  Extra service gives flexibility                       
+                                                  │  Extra service gives flexibility   
                                                   │                                 
                 ┌───────┐  ┌───────┐  ┌───────┐   │  ┌───────┐  ┌───────┐  ┌───────┐
                 │ app 1 │  │ app 2 │  │ app 3 │   │  │ app 1 │  │ app 2 │  │ app 3 │
