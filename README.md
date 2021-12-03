@@ -1,6 +1,6 @@
 # ress_notification_service
 
-Personal service to send me telegram notifications from various scripts, services etc.
+Personal utility to send me telegram notifications from various scripts, services etc.
 
 
 
@@ -13,7 +13,7 @@ Personal service to send me telegram notifications from various scripts, service
 
 ## Goal
 
-When you have some apps and services running here and there, they send you some messages, statuses, alarms. Mostly via Telegram. Easiest way is directly touch Telegram API from app, but here are problems when apps-zoo grows up. Some services may send you message at night and you don't want it. Another service send you message at night and you need it. So width Extra services that can manage notification you have possibility to filter messages by own rules, collect them etc.
+When you have some apps and services running here and there, they send you messages, statuses, alarms. Mostly via Telegram. Easiest way is directly touch Telegram API from app, but here are problems when apps-zoo grows up. Some services may send you message at night and you don't want it. Another service send you message at night and you need it. So width Extra services that can manage notification you have possibility to filter messages by own rules, collect them etc.
 
 
                                                   │  Extra service gives flexibility   
@@ -50,7 +50,7 @@ When you have some apps and services running here and there, they send you some 
 
 ## TODO
 
-Started as beginner practice in Golang and Amazon Web Services, I liked that and sometime will add functionality to filter specified notifications.
+Started as beginner practice in Golang and Amazon Web Services, I liked that and sometime will add functionality to filter specified notifications according to time and priority.
 
 ## Request example:
     curl --header "Content-Type: application/json" \
