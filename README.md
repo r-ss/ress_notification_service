@@ -16,36 +16,36 @@ Personal service to send me telegram notifications from various scripts, service
 When you have some apps and services running here and there, they send you some messages, statuses, alarms. Mostly via Telegram. Easiest way is directly touch Telegram API from app, but here are problems when apps-zoo grows up. Some services may send you message at night and you don't want it. Another service send you message at night and you need it. So width Extra services that can manage notification you have possibility to filter messages by own rules, collect them etc.
 
 
-                                      │  Extra service gives flexibility                       
-                                      │                                 
-    ┌───────┐  ┌───────┐  ┌───────┐   │  ┌───────┐  ┌───────┐  ┌───────┐
-    │ app 1 │  │ app 2 │  │ app 3 │   │  │ app 1 │  │ app 2 │  │ app 3 │
-    └───────┘  └───────┘  └───────┘   │  └───┬───┘  └───┬───┘  └───┬───┘
-        │          │          │       │      │          │          │    
-        │          │          │       │      └─┐        │        ┌─┘    
-        │          │          │       │        │        │        │      
-        └──────┐   │   ┌──────┘       │        │        │        │      
-               │   │   │              │        ▼        ▼        ▼      
-               │   │   │              │     ┏━━━━━━━━━━━━━━━━━━━━━━━━┓  
-               │   │   │              │     ┃  Notification Service  ┃  
-           ┌───▼───▼───▼───┐          │     ┗━━━━━━━━━━━┳━━━━━━━━━━━━┛  
-           │  TelegramAPI  │          │                 │               
-           └───────┬───────┘          │         ┌───────▼───────┐       
-                   │                  │         │  TelegramAPI  │       
-                   │                  │         └───────┬───────┘       
-                   ▼                  │                 ▼               
-              ┌─────────┐             │            ┌─────────┐          
-              │┌───────┐│             │            │┌───────┐│          
-              ││       ││             │            ││       ││          
-              ││       ││             │            ││       ││          
-              ││ Phone ││             │            ││ Phone ││          
-              ││       ││             │            ││       ││          
-              ││       ││             │            ││       ││          
-              │└───────┘│             │            │└───────┘│          
-              │         │             │            │         │          
-              └─────────┘             │            └─────────┘          
-                                      │                                 
-                                      │                                 
+                                                  │  Extra service gives flexibility                       
+                                                  │                                 
+                ┌───────┐  ┌───────┐  ┌───────┐   │  ┌───────┐  ┌───────┐  ┌───────┐
+                │ app 1 │  │ app 2 │  │ app 3 │   │  │ app 1 │  │ app 2 │  │ app 3 │
+                └───────┘  └───────┘  └───────┘   │  └───┬───┘  └───┬───┘  └───┬───┘
+                    │          │          │       │      │          │          │    
+                    │          │          │       │      └─┐        │        ┌─┘    
+                    │          │          │       │        │        │        │      
+                    └──────┐   │   ┌──────┘       │        │        │        │      
+                           │   │   │              │        ▼        ▼        ▼      
+                           │   │   │              │     ┏━━━━━━━━━━━━━━━━━━━━━━━━┓  
+                           │   │   │              │     ┃  Notification Service  ┃  
+                       ┌───▼───▼───▼───┐          │     ┗━━━━━━━━━━━┳━━━━━━━━━━━━┛  
+                       │  TelegramAPI  │          │                 │               
+                       └───────┬───────┘          │         ┌───────▼───────┐       
+                               │                  │         │  TelegramAPI  │       
+                               │                  │         └───────┬───────┘       
+                               ▼                  │                 ▼               
+                          ┌─────────┐             │            ┌─────────┐          
+                          │┌───────┐│             │            │┌───────┐│          
+                          ││       ││             │            ││       ││          
+                          ││       ││             │            ││       ││          
+                          ││ Phone ││             │            ││ Phone ││          
+                          ││       ││             │            ││       ││          
+                          ││       ││             │            ││       ││          
+                          │└───────┘│             │            │└───────┘│          
+                          │         │             │            │         │          
+                          └─────────┘             │            └─────────┘          
+                                                  │                                 
+                                                  │                                 
 
 
 ## TODO
@@ -53,4 +53,6 @@ When you have some apps and services running here and there, they send you some 
 Started as beginner practice in Golang and Amazon Web Services, I liked that and sometime will add functionality to filter specified notifications.
 
 ## Request example:
-    curl --header "Content-Type: application/json" --data '{"message": "Hello World 🐶"}' https://notification.custom.domain/telegram
+    curl --header "Content-Type: application/json" \
+    --data '{"message": "Hello World 🐶"}' \
+    https://notification.custom.domain/telegram
