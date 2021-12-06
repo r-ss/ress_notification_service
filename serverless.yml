@@ -50,6 +50,9 @@ functions:
           method: get
       - http:
           path: /telegram
+          method: get
+      - http:
+          path: /telegram
           method: post
 
 

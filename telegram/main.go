@@ -18,10 +18,20 @@ type InputMessage struct {
 func telegramNotificationHandler(c *gin.Context) {
 
 	var inputMessage InputMessage
-	if err := c.ShouldBindJSON(&inputMessage); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+
+	// querystring_message := c.DefaultQuery("message", "No_message_querystring")
+
+	// try bind InputMessage from querystring
+	if err := c.ShouldBind(&inputMessage); err != nil {
+
+		// Then try bing InputMessage from input json
+		if err := c.ShouldBindJSON(&inputMessage); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
 	}
+
+
 
 	requestBody, err := json.Marshal(map[string]string{
 		"chat_id": os.Getenv("TG_CHAT_ID"),
@@ -69,6 +79,7 @@ func routerEngine() *gin.Engine {
 
 	r.GET("/", rootHandler)
 	r.GET("/info", infoHandler)
+	r.GET("/telegram", telegramNotificationHandler)
 	r.POST("/telegram", telegramNotificationHandler)
 
 	return r
