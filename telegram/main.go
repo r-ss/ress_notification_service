@@ -13,6 +13,8 @@ import (
 // Binding from JSON
 type InputMessage struct {
 	Text string `form:"message" json:"message"  binding:"required"`
+	Silent string `form:"silent" json:"silent",default=False`
+	ParseMode string `form:"parse_mode" json:"parse_mode"`
 }
 
 func telegramNotificationHandler(c *gin.Context) {
@@ -36,6 +38,8 @@ func telegramNotificationHandler(c *gin.Context) {
 	requestBody, err := json.Marshal(map[string]string{
 		"chat_id": os.Getenv("TG_CHAT_ID"),
 		"text": inputMessage.Text,
+		"disable_notification": inputMessage.Silent,
+		"parse_mode": inputMessage.ParseMode,
 	})
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Unable to Marshal json.": err.Error()})
