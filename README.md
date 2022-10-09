@@ -51,6 +51,10 @@ Started as beginner practice in Golang and Amazon Web Services, I liked that and
 - Switch GIN from DEV to Release mode
 - Turn off AWS CloudWatch Logs
 
+## Run Docker
+
+    docker run -d -p 5008:8080 alexress/notificationservice
+
 ## Request example:
     curl --header "Content-Type: application/json" \
     --data '{"message": "Hello World 🐶"}' \
