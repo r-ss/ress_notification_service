@@ -48,8 +48,7 @@ When you have some apps and services running here and there, they send you messa
 
 Started as beginner practice in Golang and Amazon Web Services, I liked that and sometime will add functionality to filter specified notifications according to time and priority.
 
-- Switch GIN from DEV to Release mode
-- Turn off AWS CloudWatch Logs
+- add /mail endpoint alonside to /telegram
 
 ## Run Docker
 

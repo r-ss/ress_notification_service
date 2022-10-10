@@ -6,6 +6,7 @@ import (
 	// "encoding/json"
 	// "bytes"
 	// "io/ioutil"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"main/telegram"
 )
@@ -32,6 +33,14 @@ func routerEngine() *gin.Engine {
 	// Global middleware
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+
+	r.Use(cors.New(cors.Config{
+        AllowOrigins: []string{"*"},
+        AllowMethods: []string{"GET", "POST", "OPTION"},
+        AllowHeaders: []string{"Content-Type,access-control-allow-origin, access-control-allow-headers"},
+    }))
+
+	
 
 	r.GET("/", rootHandler)
 	r.GET("/info", infoHandler)
