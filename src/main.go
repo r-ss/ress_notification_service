@@ -24,6 +24,12 @@ func infoHandler(c *gin.Context) {
 	})
 }
 
+func optionsHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"options": "response",
+	})
+}
+
 func routerEngine() *gin.Engine {
 	// set server mode
 	gin.SetMode(gin.DebugMode)
@@ -36,16 +42,21 @@ func routerEngine() *gin.Engine {
 
 	r.Use(cors.New(cors.Config{
         AllowOrigins: []string{"*"},
-        AllowMethods: []string{"GET", "POST", "OPTION"},
+        AllowMethods: []string{"GET", "POST", "OPTIONS"},
         AllowHeaders: []string{"Content-Type,access-control-allow-origin, access-control-allow-headers"},
     }))
-
-	
 
 	r.GET("/", rootHandler)
 	r.GET("/info", infoHandler)
 	r.GET("/telegram", telegram.TelegramNotificationHandler)
 	r.POST("/telegram", telegram.TelegramNotificationHandler)
+	r.OPTIONS("/telegram", telegram.TelegramNotificationHandler)
+
+	// r.Use(cors.Default())
+
+	
+
+	
 
 	return r
 }
