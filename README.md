@@ -50,8 +50,9 @@ Started as beginner practice in Golang and Amazon Web Services, I liked that and
 
 - add /mail endpoint alonside to /telegram
 
-## Run Docker
+## Build and run Docker
 
+    docker build -t alexress/notificationservice .
     docker run -d -p 5008:8080 alexress/notificationservice
 
 ## Request example:

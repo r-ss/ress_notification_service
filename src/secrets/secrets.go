@@ -21,20 +21,12 @@ func ReadSecrets() (*Secrets, error) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(path + "/secrets.yaml")
 
-    secrets := &YAMLFile{}
+	secrets := &YAMLFile{}
     cfgFile, err := ioutil.ReadFile(path + "/secrets.yaml")
     if err != nil {
         return nil, err
     }
     err = yaml.Unmarshal(cfgFile, secrets)
-	// fmt.Println(secrets.Secrets.Test)
     return &secrets.Secrets, err
 }
-
-
-// secrets, err := readSecrets()
-// if err != nil {
-// 	panic(err)
-// }

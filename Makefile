@@ -1,5 +1,3 @@
-.PHONY: build clean deploy
-
 build:
 	go get ./...
 	go mod vendor
@@ -8,5 +6,11 @@ build:
 clean:
 	rm -rf ./bin ./vendor
 
-deploy: clean build
-	sls deploy --verbose
+dockerbuild:
+	docker build -t alexress/notificationservice .
+
+docker_run:
+	docker run -p 5008:8080 alexress/notificationservice
+
+docker_daemon:
+	docker run -d -p 5008:8080 alexress/notificationservice

@@ -3,14 +3,12 @@ package telegram
 import (
 	"fmt"
 	"net/http"
-	// "os"
 	"encoding/json"
 	"bytes"
 	"io/ioutil"
 	"github.com/gin-gonic/gin"
 	"main/secrets"
 )
-
 
 // Binding from JSON
 type InputMessage struct {
@@ -21,11 +19,6 @@ type InputMessage struct {
 
 func TelegramNotificationHandler(c *gin.Context) {
 
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
-	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
-	c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT, DELETE")
-
 	if c.Request.Method == "OPTIONS" {
 		c.AbortWithStatus(204)
 		return
@@ -33,26 +26,19 @@ func TelegramNotificationHandler(c *gin.Context) {
 
 	var inputMessage InputMessage
 
-	
-
 	secrets, err := secrets.ReadSecrets()
     if err != nil {
         panic(err)
     }
 
-	// querystring_message := c.DefaultQuery("message", "No_message_querystring")
-
 	// try bind InputMessage from querystring
 	if err := c.ShouldBind(&inputMessage); err != nil {
-
 		// Then try bing InputMessage from input json
 		if err := c.ShouldBindJSON(&inputMessage); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
 	}
-
-
 
 	requestBody, err := json.Marshal(map[string]string{
 		"chat_id": "95622548",
@@ -66,8 +52,6 @@ func TelegramNotificationHandler(c *gin.Context) {
     }
 
 	var URL = "https://api.telegram.org/bot" + secrets.Token + "/sendMessage"
-
-	fmt.Println(URL)
 
 	resp, err := http.Post(URL, "application/json", bytes.NewBuffer(requestBody))
 
