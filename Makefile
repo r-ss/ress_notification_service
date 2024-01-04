@@ -7,10 +7,10 @@ clean:
 	rm -rf ./bin ./vendor
 
 dockerbuild:
-	docker build -t alexress/notificationservice .
+	docker build -t ress/notificationservice .
 
 docker_run:
-	docker run -p 5008:8080 alexress/notificationservice
+	docker run -p 5008:8080 ress/notificationservice
 
 docker_daemon:
-	docker run -d -p 5008:8080 alexress/notificationservice
+	docker run -d -p 5008:8080 ress/notificationservice

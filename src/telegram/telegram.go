@@ -1,7 +1,7 @@
 package telegram
 
 import (
-	"fmt"
+	// "fmt"
 	"net/http"
 	"encoding/json"
 	"bytes"
